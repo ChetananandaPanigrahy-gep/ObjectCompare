@@ -44,8 +44,8 @@ namespace ConsoleApp5
                 }
             };
             //Console.WriteLine(JsonConvert.SerializeObject(new Comparer().Compare(invoice1, invoice2), Formatting.Indented));
-            InvoiceSections invsec1 = JsonConvert.DeserializeObject<InvoiceSections>(File.ReadAllText(@"C:\Users\CPanigrahy\Desktop\1"));
-            InvoiceSections invsec2 = JsonConvert.DeserializeObject<InvoiceSections>(File.ReadAllText(@"C:\Users\CPanigrahy\Desktop\2"));
+            InvoiceSections invsec1 = JsonConvert.DeserializeObject<InvoiceSections>(File.ReadAllText(@"..\..\..\..\..\1"));
+            InvoiceSections invsec2 = JsonConvert.DeserializeObject<InvoiceSections>(File.ReadAllText(@"..\..\..\..\..\2"));
             Console.WriteLine(JsonConvert.SerializeObject(new Comparer().Compare(invsec1, invsec2), Formatting.Indented));
         }
 
