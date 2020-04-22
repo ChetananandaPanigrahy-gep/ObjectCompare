@@ -4,27 +4,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace ObjectCompareStandard
+namespace ObjComparerMinimal
 {
     public class ObjectComparer
     {
-        public class PropertyCompareResult
-        {
-            public string PropertyPath { get; private set; }
-            public object OldValue { get; private set; }
-            public object NewValue { get; private set; }
-
-            public PropertyCompareResult(string propertyPath, object oldValue, object newValue)
-            {
-                PropertyPath = propertyPath;
-                OldValue = oldValue;
-                NewValue = newValue;
-            }
-        }
         List<PropertyCompareResult> updated = new List<PropertyCompareResult>();
         public List<PropertyCompareResult> Compare<T>(T oldObject, T newObject, string name = "")
         {
-
+            if(oldObject == null || newObject == null)
+            {
+                updated.Add(new PropertyCompareResult(name, oldObject, newObject));
+            }
             Type t = oldObject != null ? oldObject.GetType() : newObject.GetType();
             PropertyInfo[] properties = t.GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
@@ -33,7 +23,6 @@ namespace ObjectCompareStandard
                 object oldValue = oldObject != null ? pi.GetValue(oldObject) : null, newValue = newObject != null ? pi.GetValue(newObject) : null;
                 if (pi.PropertyType.IsPrimitive || pi.PropertyType == typeof(string) || pi.PropertyType == typeof(DateTime))
                 {
-
                     if (!object.Equals(oldValue, newValue))
                     {
                         updated.Add(new PropertyCompareResult(!string.IsNullOrEmpty(name) ? name + "." + pi.Name : pi.Name, oldValue, newValue));
