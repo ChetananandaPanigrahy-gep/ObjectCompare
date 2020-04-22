@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Compare
+namespace ObjectCompareStandard
 {
-    class Comparer
+    public class ObjectComparer
     {
-        internal class PropertyCompareResult
+        public class PropertyCompareResult
         {
             public string PropertyPath { get; private set; }
             public object OldValue { get; private set; }
@@ -22,7 +22,7 @@ namespace Compare
             }
         }
         List<PropertyCompareResult> updated = new List<PropertyCompareResult>();
-        internal List<PropertyCompareResult> Compare<T>(T oldObject, T newObject, string name = "")
+        public List<PropertyCompareResult> Compare<T>(T oldObject, T newObject, string name = "")
         {
 
             Type t = oldObject != null ? oldObject.GetType() : newObject.GetType();
