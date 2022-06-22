@@ -10,7 +10,7 @@
     <PackageReference Include="GEP.Cumulus.Partner.Entities" Version="4.0.2" />
     <PackageReference Include="GEP.Cumulus.QuestionBank.Entities" Version="4.0.2" />
     <PackageReference Include="GEP.SMART.Invoice.BusinessEntities" Version="2.0.29" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>
